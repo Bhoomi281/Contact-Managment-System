@@ -7,7 +7,7 @@ export default function TotalContacts() {
         search
         import 
         tooltip
-        delete
+        delete .
     </div>
   )
 }
