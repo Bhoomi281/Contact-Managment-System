@@ -23,7 +23,7 @@ function Delete({ selectContact, deleteUser }) {
       <div className="container-2">
         {state && (
           <div className="dialog">
-            <div id="delete-file" className="wrapper">
+            <div id="delete-file" className="delete-wrap">
               <div className="box">
                 <img src={deleteIcon} />
               </div>
@@ -31,7 +31,7 @@ function Delete({ selectContact, deleteUser }) {
               <p style={{ fontSize: '16px', color: '#2DA5FC' }}>
                 Sure you want to delete this Contact?
               </p>
-              <div className="box" id="delete-confirm">
+              <div className="deletebox" id="delete-confirm">
                 <button onClick={() => setState(false)}>Cancel</button>
                 <p onClick={handleDelete}>OK</p>
               </div>
