@@ -1,5 +1,7 @@
 const express = require("express")
-const {user} = require("../models/user.jsx")
+const {user} = require("../models/user.jsx");
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 
 const router = express.Router()
 
@@ -15,7 +17,9 @@ router.post("/signup", async (req, resp)=>{
         return resp.json({message: "Password in not matched"})
     }
 
-    const newUser = new user({email, password , confirm_password});
+    const hashPassword = await bcrypt.hash(confirm_password, 10)
+
+    const newUser = new user({email, password: hashPassword});
     await newUser.save()
 
     resp.json({message:"user register successfully"})
