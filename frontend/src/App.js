@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-rout
 import SingUp from './pages/authentication/signup';
 import Login from './pages/authentication/login';
 import TotalContacts from './pages/totalContacts/totalContacts';
+import Auth from './pages/authentication/auth';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path='/' element={<Auth />} />
           <Route path='/signup' element={<SingUp />} />
           <Route path='/contacts' element={<TotalContacts />} />
         </Routes>
