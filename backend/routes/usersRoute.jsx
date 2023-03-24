@@ -17,7 +17,7 @@ router.post("/signup", async (req, resp)=>{
         return resp.json({message: "Password in not matched"})
     }
 
-    const hashPassword = await bcrypt.hash(confirm_password, 10)
+    const hashPassword = await bcrypt.hash(confirm_password, 10) // hash the password
 
     const newUser = new user({email, password: hashPassword});
     await newUser.save()
