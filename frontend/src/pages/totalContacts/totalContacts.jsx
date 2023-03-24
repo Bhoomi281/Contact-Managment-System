@@ -1,10 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../totalContacts/totalContacts.css";
-import ToolTip from "./ToolTip";
+import Tooltip from "../tooltip/tooltip.jsx";
 import { useContext, useState, useEffect } from "react";
-import { Context } from "../components/axios";
-import ImportButton from "./importButton";
+import { Context } from "react";
+import Import from "../import/import.jsx";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -135,7 +135,7 @@ function ContactPage() {
               </div>
             </div>
           </div>
-          <ImportButton />
+          <Import />
           <div className="row">
             <div className="table-responsive ">
               <table className="table table-hover " id="myTable">
@@ -183,9 +183,9 @@ function ContactPage() {
                       <td> {udata.designation}</td>
                       <td> {udata.company}</td>
                       <td> {udata.industry}</td>
-                      <ToolTip content={udata.email}>
+                      <Tooltip content={udata.email}>
                         <td> {udata.email}</td>
-                      </ToolTip>
+                      </Tooltip>
                       <td> {udata.phoneNumber}</td>
                       <td> {udata.country}</td>
                       <td>
