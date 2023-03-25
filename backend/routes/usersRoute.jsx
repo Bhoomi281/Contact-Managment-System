@@ -6,18 +6,18 @@ const bcrypt = require("bcrypt")
 const router = express.Router()
 
 router.post("/signup", async (req, resp)=>{
-    const {email, password, confirm_password} = req.body;
+    const {email, password, confirm_Password} = req.body;
 
     const userEmail = await user.findOne({email})
     if(userEmail){
         return resp.json({message: "Email already exitss!"})
     }
 
-    if(password !== confirm_password){
-        return resp.json({message: "Password in not matched"})
+    if(password !== confirm_Password){
+        return resp.json({message: "Password is not matched"})
     }
 
-    const hashPassword = await bcrypt.hash(confirm_password, 10) // hash the password
+    const hashPassword = await bcrypt.hash(confirm_Password, 10) // hash the password
 
     const newUser = new user({email, password: hashPassword});
     await newUser.save()
