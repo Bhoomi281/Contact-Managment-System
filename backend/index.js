@@ -3,15 +3,15 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 
 // import { userRouter } from "./routes/usersRoute";
-// const user = require("./routes/router")
 const user = require("./routes/usersRoute.jsx")
+// const contacts = require("./routes/contacts.js")
 const port = 3001;
 const app = express();
 app.use(express.json())
 app.use(cors());
 
 
-const url = "mongodb+srv://BhoomiVerma:Bhoomiverma12345@cluster0.dquta3f.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://dhiraj:dhiraj123@cluster0.xhkozew.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(url).then(()=>{
     console.log("Connection with mongoos successful")
@@ -21,5 +21,5 @@ mongoose.connect(url).then(()=>{
 
 
 app.use("/auth", user)
-
+// app.use("/api" , contacts)
 app.listen(port,()=>{console.log(`BE is running on port ${port}`)})

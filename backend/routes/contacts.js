@@ -1,9 +1,7 @@
 const router = require("express").Router()
-const { json } = require("body-parser");
-const bodyParser = require("body-parser");
-const contactsModel=require("../models/contacts");
-router.use(bodyParser.json());
-const { validateToken } = require("../routes/usersRoute");
+// router.use(bodyParser.json());
+const {Contacts} = require("../models/contacts.js");
+// const { validateToken } = require("../routes/usersRoute");
 
 //posting 
 
@@ -15,7 +13,7 @@ router.post('/api/v1/contacts',validateToken,async(req,res)=>{
 
          for(let i=0; i<arr.length; i++){
             
-            await contactsModel.create({
+            await Contacts.create({
                 name:arr[i].name,
                 designation: arr[i].designation,
                 company:arr[i].company,
@@ -43,7 +41,7 @@ router.post('/api/v1/contacts',validateToken,async(req,res)=>{
 router.get("/api/v1/contacts",validateToken,async(req,res)=>{
     try{
         
-        const users = await contactsModel.find({userId:req.user});
+        const users = await Contacts.find({userId:req.user});
         console.log("1",users);
         res.status(200).json({
             status:"success",
@@ -61,7 +59,7 @@ router.get("/api/v1/contacts",validateToken,async(req,res)=>{
 router.get("/api/v1/contacts/:email",validateToken,async(req,res)=>{
     try{
 
-        const user = await contactsModel.findOne({email:req.params.email});
+        const user = await Contacts.findOne({email:req.params.email});
         if(user.email){
             res.status(200).json({
                 status:"success",
