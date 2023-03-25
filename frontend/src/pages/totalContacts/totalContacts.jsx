@@ -3,14 +3,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../totalContacts/totalContacts.css";
 import Tooltip from "../tooltip/tooltip.jsx";
 import { useContext, useState, useEffect } from "react";
-import {  ContactContextProvider } from "../context/ContactContext";
+import { Context } from "../context/ContactContext";
 import Import from "../import/import.jsx";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import search from "../images/search.png"
+import logout from "../images/logout.png"
 
 function ContactPage() {
   const { contacts, myFunction, query, setdeletearr, setContacts } =
-    useContext( ContactContextProvider);
+    useContext( Context);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState(contacts);
   const [pageCount, setPageCount] = useState(0);
@@ -82,10 +84,11 @@ function ContactPage() {
                 document.location.reload();
               }}
             >
-              <i
+              <i 
                 className="bi bi-box-arrow-right"
                 style={{ cursor: "pointer" }}
-              ></i>{" "}
+                img={logout}
+              />
               Logout
             </h5>
           </div>
@@ -104,6 +107,9 @@ function ContactPage() {
             <div className="col-sm-5 mt-2 mb-4 text-gred">
               <div className="input-group">
                 <div className="form-outline">
+                <div id="search-image">
+                <img src={search} />
+              </div>
                   <input
                     id="myInput"
                     type="search"

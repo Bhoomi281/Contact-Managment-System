@@ -1,6 +1,7 @@
 import React from "react";
 import { useState , useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import  search from "../images/search";
 
 const SearchBar=()=>{
   const [data, setData] = useState([]);
@@ -31,6 +32,9 @@ const SearchBar=()=>{
 
   return (
     <div className="main">
+      <span id="import-image">
+                <img src={search} />
+              </span>
       <input id="search-input" type="search" className="form-control" placeholder="Search by Email id.." value={filterVal} onInput={(e)=>handleFilter(e)} />
     </div>
   );

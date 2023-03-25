@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors());
 
 
-const url = `mongodb+srv://dhiraj:dhiraj123@cluster0.xhkozew.mongodb.net/contactmanger?retryWrites=true&w=majority`
+const url = "mongodb+srv://BhoomiVerma:Bhoomiverma12345@cluster0.dquta3f.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(url).then(()=>{
     console.log("Connection with mongoos successful")
