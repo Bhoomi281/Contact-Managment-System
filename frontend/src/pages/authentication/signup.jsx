@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import { useState } from 'react';
 
@@ -21,3 +22,5 @@ export default function SingUp() {
     </div>
   )
 }
+=======
+>>>>>>> b3f0e2662ba75745942cbb00edbffffc59bad696

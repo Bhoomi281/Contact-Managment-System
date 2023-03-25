@@ -3,11 +3,11 @@ import Importicon from '../images/import.png'
 import check from "../images/Check.png";
 import fileicon from "../images/file.png"
 import { useContext, useState } from "react";
-import {ContactContextProvider} from '../context/ContactContext'
+import {Context} from '../context/ContactContext'
 import './import.css'
 import axios from 'axios';
 function Import() {
-  const { getData } = useContext(ContactContextProvider);
+  const { getData } = useContext(Context);
   const [state, setState] = useState(false);
   const [uploaded, setuploaded] = useState(false);
   const handleState = () => {
