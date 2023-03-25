@@ -97,32 +97,9 @@ router.get("/api/v1/contacts/:email",validateToken,async(req,res)=>{
 
 
 
-//delete contacts
 
-router.delete("/api/v1/contacts/:id",validateToken,async(req,res)=>{
-    console.log(req.params.id)
-    try{
-
-        const finddelete=await contactsModel.find({_id:req.params.id})
-
-        const datadelete=await contactsModel.deleteOne({_id:req.params.id})
-        
-        res.json({
-            status:"deleted",
-            finddelete
-        })
-        console.log(datadelete);
-    }
-
-    
-    catch(e){
-         res.json({
-            status:"failed",
-            message:e.message
-        })
-        
-    }
-})
+            
+  
 
 module.exports = router;
 
