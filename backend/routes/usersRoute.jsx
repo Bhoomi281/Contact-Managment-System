@@ -26,4 +26,23 @@ router.post("/signup", async (req, resp)=>{
 
 })
 
+router.post("/login", async(req, resp)=>{
+    const { email , password } = req.body
+
+    const person = await user.findOne({email});
+
+    if(!person){
+        return resp.json({massage: "User Not Exits..."})
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, person.password);
+
+    if(!isPasswordValid){
+        return resp.json({messge: "Password is incorrect"})
+    }
+
+    const token = jwt.sign({id: person._id}, "secret")
+    resp.json({token, userId: person._id})
+})
+
 module.exports = router

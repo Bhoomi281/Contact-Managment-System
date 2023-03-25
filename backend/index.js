@@ -19,6 +19,7 @@ mongoose.connect(url).then(()=>{
     console.log(`Connection with mongoose failed ${err}`)
 })
 
+
 app.use("/auth", user)
 
 app.listen(port,()=>{console.log(`BE is running on port ${port}`)})
