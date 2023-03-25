@@ -3,14 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../totalContacts/totalContacts.css";
 import Tooltip from "../tooltip/tooltip.jsx";
 import { useContext, useState, useEffect } from "react";
-import { Context } from "react";
+import {  ContactContextProvider } from "../context/ContactContext";
 import Import from "../import/import.jsx";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 function ContactPage() {
   const { contacts, myFunction, query, setdeletearr, setContacts } =
-    useContext(Context);
+    useContext( ContactContextProvider);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState(contacts);
   const [pageCount, setPageCount] = useState(0);
