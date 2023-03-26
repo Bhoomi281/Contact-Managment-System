@@ -42,15 +42,34 @@ margin-left: 30px;
 margin-top: 25px;
 border-radius: 6px;
 background: #2DA5FC;
+justify-content: center;
+}
+.dlogo
+{
+  position: absolute;
+left: 2.31%;
+right: 96.53%;
+top: 20.05%;
+bottom: 77.8%;
+color: #0884FF;
+}
+.dashlogo
+{
+  position: absolute;
+   height: 30px;
+   width: 35px;
+  position: absolute;
+    margin-left: 25px;
 }
 .text_tc{
   height: 27px;
 width: 108px;
 margin-left: 30px;
 margin-top: 35px;
+padding-top: 15px;
 border-radius: nullpx;
-  font-family: Titillium Web;
-font-size: 16px;
+font-family: Titillium Web;
+font-size: 18px;
 font-weight: 500;
 line-height: 27px;
 letter-spacing: 0em;
@@ -88,20 +107,33 @@ color: #454545
 
 
 .search{
-  height: 35px;
-width: 380px;
-margin-left: 300px;
-margin-top: -30px;
-border-radius: 6px;
+position: absolute;
+width: 450px;
+height: 50px;
+left: 710px;
+top: 24px;
 background: #F2F2F2;
-border: #F2F2F2;
+border-radius: 6px;
+text-align: center;
+
+}
+.searchlogo
+{
+position: absolute;
+left: 750px;
+top: 30px;
+padding: 15px 15px
+}
+#text
+{
+  font-size: 20px;
 }
 
 .user_name{
 position: absolute;
 width: 80px;
 height: 24px;
-left: 1480px;
+left: 1380px;
 top: 27px;
 font-family: Titillium Web;
 font-size: 16px;
@@ -117,7 +149,7 @@ color: #000000
   position: absolute;
 width: 76px;
 height: 21px;
-left: 1480px;
+left: 1380px;
 top: 51px;
 border-radius: nullpx;
 Font-family: Titillium Web;
@@ -136,7 +168,7 @@ font-weight: 500;
   position: absolute;
 width: 44px;
 height: 44px;
-left: 1400px;
+left: 1300px;
 top: 20px;
 }
 
@@ -231,19 +263,23 @@ text-align: left;
   box-shadow: 1px 1px 20px 0px #0000001A;
 }
 .logout{
- margin-top: 430px;
- margin-left: 40px;
+ margin-top: 580px;
+ margin-left: 50px;
   Font-family: Titillium Web;
   Font-style: Regular;
-  Font-size: 15px;
+  Font-size: 20px;
   Line-height: 27px;
   Line-height: 100%;
   Align: Left;
-  font-weight: 100;
+  font-weight: 150;
   Vertical-align: Top;
 background-color: #CEF3FF;
 border: none;
 opacity: 90%;
+}
+#logout
+{
+   margin-right: 25px;
 }
 .pageNumber{
   margin-left: 85vw;
@@ -256,12 +292,7 @@ opacity: 90%;
   margin-left: 0.5vw;
   /* color: #2DA5FC; */
 }
-.fa fa-pencil
+.pencil
 {
-  position: absolute;
-  left: 31.25%;
-  right: 62.5%;
-  top: 37.5%;
-  bottom: 25%;
-  background: #F81D1D;
+  margin-right: 10px;
 }

@@ -1,6 +1,7 @@
 const router = require("express").Router()
-
 const {Contacts} = require("../models/contacts.js");
+ const data = require("./usersRoute.jsx")
+        
 //posting 
 
 router.post('/contacts',async(req,res)=>{
@@ -19,7 +20,7 @@ router.post('/contacts',async(req,res)=>{
                 industry: arr[i].industry,
                 phone:arr[i].phone,
                 country:arr[i].country,
-                userId:req.user
+                userId: req.user
             });
          }
 
@@ -40,10 +41,10 @@ router.get("/contacts",async(req,res)=>{
     try{
         
         const users = await Contacts.find({userId:req.user});
-        console.log("1",users);
+        console.log("1",user);
         res.status(200).json({
             status:"success",
-            users
+           users
         })
     }
     catch(e){
