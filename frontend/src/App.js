@@ -5,6 +5,7 @@ import Login from './pages/authentication/login';
 // import TotalContacts from './pages/totalContacts/totalContacts';
 import SingUp from './pages/authentication/signup';
 import Auth from './pages/authentication/auth';
+import ContactPages from './pages/totalContacts/ContactPages';
 
 function App() {
   return (
@@ -13,8 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Auth />} />
           <Route path='/signup' element={<SingUp />} />
-          {/* <Route path='/contacts' element={<TotalContacts />} /> */}
-          <Route path='contactPages' element={<ContactPages />} />
+          <Route path='/contactPages' element={<ContactPages />} />
         </Routes>
       </Router>
     </div>
