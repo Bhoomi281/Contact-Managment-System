@@ -1,6 +1,7 @@
 import React from 'react'
 import '../delete/delete.css'
 import Deleteicon from '../images/delete.png'
+import check from '../images/Check.png'
 function Delete({ selectContact, deleteUser }) {
   const [state, setState] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -25,7 +26,7 @@ function Delete({ selectContact, deleteUser }) {
           <div className="dialog">
             <div id="delete-file" className="delete-wrap">
               <div className="box">
-                <img src={deleteIcon} />
+                <img src={Deleteicon} />
               </div>
               <p style={{ fontSize: '24px' }}>Delete Contact</p>
               <p style={{ fontSize: '16px', color: '#2DA5FC' }}>
