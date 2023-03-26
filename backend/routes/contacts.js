@@ -1,11 +1,9 @@
 const router = require("express").Router()
-// router.use(bodyParser.json());
-const {Contacts} = require("../models/contacts.js");
-// const { validateToken } = require("../routes/usersRoute");
 
+const {Contacts} = require("../models/contacts.js");
 //posting 
 
-router.post('/api/v1/contacts',validateToken,async(req,res)=>{
+router.post('/contacts',async(req,res)=>{
     try{
         const arr = req.body;
         console.log("hitting-post");
@@ -14,12 +12,12 @@ router.post('/api/v1/contacts',validateToken,async(req,res)=>{
          for(let i=0; i<arr.length; i++){
             
             await Contacts.create({
+                email: arr[i].email,
                 name:arr[i].name,
                 designation: arr[i].designation,
                 company:arr[i].company,
                 industry: arr[i].industry,
-                email: arr[i].email,
-                phoneNumber:arr[i].phoneNumber,
+                phone:arr[i].phone,
                 country:arr[i].country,
                 userId:req.user
             });
@@ -38,7 +36,7 @@ router.post('/api/v1/contacts',validateToken,async(req,res)=>{
     }
 });
 
-router.get("/api/v1/contacts",validateToken,async(req,res)=>{
+router.get("/contacts",async(req,res)=>{
     try{
         
         const users = await Contacts.find({userId:req.user});
@@ -56,7 +54,7 @@ router.get("/api/v1/contacts",validateToken,async(req,res)=>{
     }
 });
 
-router.get("/api/v1/contacts/:email",validateToken,async(req,res)=>{
+router.get("/contacts/:email",async(req,res)=>{
     try{
 
         const user = await Contacts.findOne({email:req.params.email});

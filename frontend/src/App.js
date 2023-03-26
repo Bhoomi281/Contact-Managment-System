@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Login from './pages/authentication/login';
@@ -17,6 +18,14 @@ function App() {
       </Router>
     </div>
   );
+import ContactPages from './pages/totalContacts/ContactPages';
+// import Pagination from './Pagination';
+function App(){
+return (
+<div>
+<ContactPages/>
+{/* <Pagination/> */}
+</div>
+);
 }
-
-export default App;
+export default App
