@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 530a5420bb43921407144ae1bd8cc438bef843e1
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios'
@@ -42,7 +39,4 @@ export default function SignUp() {
     </div>
   )
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 530a5420bb43921407144ae1bd8cc438bef843e1

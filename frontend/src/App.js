@@ -14,18 +14,20 @@ function App() {
           <Route path='/' element={<Auth />} />
           <Route path='/signup' element={<SingUp />} />
           {/* <Route path='/contacts' element={<TotalContacts />} /> */}
+          <Route path='contactPages' element={<ContactPages />} />
         </Routes>
       </Router>
     </div>
   );
-import ContactPages from './pages/totalContacts/ContactPages';
-// import Pagination from './Pagination';
-function App(){
-return (
-<div>
-<ContactPages/>
-{/* <Pagination/> */}
-</div>
-);
-}
-export default App
+  }
+// import ContactPages from './pages/totalContacts/ContactPages';
+// // import Pagination from './Pagination';
+// function App(){
+// return (
+// <div>
+// <ContactPages/>
+// {/* <Pagination/> */}
+// </div>
+// );
+// }
+// export default App
