@@ -1,17 +1,24 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 530a5420bb43921407144ae1bd8cc438bef843e1
 import React from 'react'
 import { useState } from 'react';
+import axios from 'axios'
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
-  const onsubmit = () =>{
-    
+  const onsubmit = async (event) =>{
+    try{
+      await axios.post("/http://localhost:3001/auth/signup", {
+        email,
+        password,
+        confirmPassword
+      })
+      alert("Registration successfull..!");
+    }catch(err){
+      console.error(err)
+    }
   }
   return (
     <div>
@@ -32,7 +39,4 @@ export default function SignUp() {
     </div>
   )
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 530a5420bb43921407144ae1bd8cc438bef843e1
