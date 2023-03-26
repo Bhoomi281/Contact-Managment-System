@@ -1,9 +1,8 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom'
-import signUp from './pages/authentication/signup';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Login from './pages/authentication/login';
-import TotalContacts from './pages/totalContacts/totalContacts';
-import 
+// import TotalContacts from './pages/totalContacts/totalContacts';
+import SingUp from './pages/authentication/signup';
 
 function App() {
   return (
@@ -11,8 +10,8 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Login />} />
-          <Route path='/signup' element={<signUp />} />
-          <Route path='/contacts' element={<TotalContacts />} />
+          <Route path='/signup' element={<SingUp />} />
+          {/* <Route path='/contacts' element={<TotalContacts />} /> */}
         </Routes>
       </Router>
     </div>

@@ -12,7 +12,7 @@ import logout from "../images/logout.png"
 
 function ContactPage() {
   const { contacts, myFunction, query, setdeletearr, setContacts } =
-    useContext( Context);
+    useContext(Context);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState(contacts);
   const [pageCount, setPageCount] = useState(0);
@@ -84,7 +84,7 @@ function ContactPage() {
                 document.location.reload();
               }}
             >
-              <i 
+              <i
                 className="bi bi-box-arrow-right"
                 style={{ cursor: "pointer" }}
                 img={logout}
@@ -107,9 +107,9 @@ function ContactPage() {
             <div className="col-sm-5 mt-2 mb-4 text-gred">
               <div className="input-group">
                 <div className="form-outline">
-                <div id="search-image">
-                <img src={search} />
-              </div>
+                  <div id="search-image">
+                    <img src={search} />
+                  </div>
                   <input
                     id="myInput"
                     type="search"
