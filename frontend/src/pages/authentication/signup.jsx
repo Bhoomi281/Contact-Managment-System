@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 import React from 'react'
 import { useState } from 'react';
 
-export default function SingUp() {
+export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -22,5 +22,4 @@ export default function SingUp() {
     </div>
   )
 }
-=======
->>>>>>> b3f0e2662ba75745942cbb00edbffffc59bad696
+

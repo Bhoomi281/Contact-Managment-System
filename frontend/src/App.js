@@ -1,22 +1,16 @@
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter} from 'react-router-dom'
-import signUp from './pages/authentication/signup';
-import Login from './pages/authentication/login';
-import TotalContacts from './pages/totalContacts/totalContacts';
-import 
+import ContactPages from './pages/totalContacts/ContactPages';
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/signup' element={<signUp />} />
-          <Route path='/contacts' element={<TotalContacts />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+
+// import Pagination from './Pagination';
+function App(){
+return (
+<div>
+<ContactPages/>
+{/* <Pagination/> */}
+</div>
+);
 }
 
-export default App;
+export default App
