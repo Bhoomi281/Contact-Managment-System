@@ -1,21 +1,22 @@
-const express = require("express")
-const cors = require("cors")
-const mongoose = require("mongoose")
-const user = require("./routes/usersRoute.jsx")
-const contacts = require("./routes/contacts.js")
-const port = 3001;
+const express = require("express");
+require('dotenv').config();
+const cors=require('cors');
+const dbconnect=require('./connection/conn');
+const bodyParser=require('body-parser');
+const checkToken = require('./helper/verifytoken');
+dbconnect();
 const app = express();
+const contactRoute=require('./routes/contacts')
+const resisterAndLogin = require('./routes/usersRoute.jsx');
+//const contactDetails=require('./routes/contacts')
 
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(resisterAndLogin);
+app.use('/contacts',checkToken,contactRoute);
+//app.use('/contacts',checkToken,contactDetails);
 
-const url = "mongodb+srv://dhiraj:dhiraj123@cluster0.xhkozew.mongodb.net/?retryWrites=true&w=majority";
-
-mongoose.connect(url).then(()=>{
- console.log("Connection with mongoos successful")
-}).catch((err) => {
-    console.log(`Connection with mongoose failed ${err}`)
-})
-
-app.use("/auth", user)
-app.use("/api", contacts)
-
-app.listen(port, () => { console.log(`BE is running on port ${port}`) })
+app.listen(8080, () => {
+  console.log("Server started on port 8080");
+});

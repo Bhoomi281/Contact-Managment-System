@@ -1,48 +1,81 @@
-const express = require("express")
-const {user} = require("../models/user.jsx");
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
+const express = require('express');
+const userData = require('../models/userData.jsx')
+const { body, validationResult } = require('express-validator');
+const router = express.Router();
+router.use(express.json());
+const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
-const router = express.Router()
+const secret = "RESTAPI";
+router.post("/register", async (req, res) => {
 
-router.post("/signup", async (req, resp)=>{
-    const {email, password, confirm_password} = req.body;
+        try {
+            const { email, password } = req.body;
+            const user = await userData.findOne({ email });
+            if (user) {
+                return res.status(403).json({ error: "User already exists" })
+            }
+            bcrypt.hash(password, 10, async function (err, hash) {
+                if (err) {
+                    return res.status(500).json({
+                        error: err.message
+                    })
+                }
+                const data = await userData.create({
+                    email,
+                    password: hash
+                })
+                return res.status(200).json({
+                    message: "SignUp Successfully"
+                })
+            })
+        } catch (err) {
+            return res.status(400).json({
+                status: "Failed",
+                message: err.message
+            })
+        }
 
-    const userEmail = await user.findOne({email})
-    if(userEmail){
-        return resp.json({message: "Email already exitss!"})
+    })
+
+router.post("/", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await userData.findOne({ email });
+        if (!user) {
+            return res.status(403).json({
+                error: "Enter valid details"
+            })
+        }
+        bcrypt.compare(password, user.password, function (err, result) {
+            if (err) {
+                return res.status(500).json({
+                    error: err.message
+                })
+            }
+            if (result) {
+                const token = jwt.sign({
+                    exp: Math.floor(Date.now() / 1000) + (24 * 60 * 60),
+                    data: user._id
+                }, secret);
+                return res.status(200).json({
+                    message: "Login successfull",
+                    token: token,
+                    user : user.email
+                })
+            } else {
+                return res.status(400).json({
+                    error: "Invallid Password"
+                })
+            }
+        })
+    } catch (err) {
+        return res.status(400).json({
+            status: "Failed",
+            message: err.message
+        })
     }
-
-    if(password !== confirm_password){
-        return resp.json({message: "Password is not matched"})
-    }
-
-    const hashPassword = await bcrypt.hash(confirm_password, 10) // hash the password
-
-    const newUser = new user({email, password: hashPassword});
-    await newUser.save()
-
-    resp.json({message:"user register successfully"})
-
 })
 
-router.post("/login", async(req, resp)=>{
-    const { email , password } = req.body
 
-    const person = await user.findOne({email});
-
-    if(!person){
-        return resp.json({massage: "User Not Exits..."})
-    }
-
-    const isPasswordValid = await bcrypt.compare(password, person.password);
-
-    if(!isPasswordValid){
-        return resp.json({messge: "Password is incorrect"})
-    }
-
-    const token = jwt.sign({id: person._id}, "secret")
-    resp.json({token, userId: person._id})
-})
-
-module.exports = router
+module.exports = router;
