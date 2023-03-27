@@ -6,10 +6,11 @@ const contacts = require("./routes/contacts.js")
 const port = 3001;
 const app = express();
 
+
 const url = "mongodb+srv://dhiraj:dhiraj123@cluster0.xhkozew.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose.connect(url).then(() => {
-    console.log("Connection with mongoos successful")
+mongoose.connect(url).then(()=>{
+ console.log("Connection with mongoos successful")
 }).catch((err) => {
     console.log(`Connection with mongoose failed ${err}`)
 })
