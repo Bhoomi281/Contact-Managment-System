@@ -1,58 +1,107 @@
-import React from 'react'
-import '../delete/delete.css'
-import Deleteicon from '../images/delete.png'
-import check from '../images/Check.png'
-function Delete({ selectContact, deleteUser }) {
-  const [state, setState] = useState(false);
-  const [deleted, setDeleted] = useState(false);
+import {React,useState} from 'react';
+import './delete.css';
+import axios from 'axios';
 
-  const handleDelete = () => {
-    deleteUser(selectContact);
-    setDeleted(true);
-    setState(false);
+import deleteIcon from './delete.svg';
+import cancelBtn from './cancelBtn.svg';
+import completed from './tickMark.svg'
+
+
+function DeleteUI(props) {
+  const [apiCallMade, setApiCallMade] = useState(false);
+  const [dlt, setDelete] = useState(false) ;
+  const url=process.env.REACT_APP_API;
+
+
+  const {deleteVisible,setDltvisible}=props;
+  // const {renderOnce,setRenderOnce}=props;
+  const {data,setData}=props;
+// console.log(apiCallMade,dlt,url,array);
+
+
+
+  const deleteCall=async ()=>{
+    
+    //
+    const array = data
+  .filter(obj => obj.isChecked === true)
+  .map(obj => obj._id);
+  
+  console.log(array);
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        // "authorization": `${token}`,
+        "ids": array
+      }
+    };
+    try {
+      if (!apiCallMade) {
+      await axios.delete(`${url}/contacts/delete`,config) .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      setDelete(!dlt);
+      setApiCallMade(true);
+
+     /////////////////////
+     setTimeout(() => {
+      // setRenderOnce(!renderOnce);
+      
+      setDltvisible(!deleteVisible);
+      
+    }, 1500);
+    /////////////////////
+  
+
+      }
+      //console.log(response);
+    } catch (error) {
+      setDelete(!dlt);
+      console.error(error);
+
+      /////////////////////
+      setTimeout(() => {
+        // setRenderOnce(!renderOnce);
+        setDltvisible(!deleteVisible);
+       
+      }, 1500);
+      /////////////////////
+  
+    }
   };
 
+    const cancel=()=>{
+      setDltvisible(!deleteVisible);
+    }
+  
+
   return (
-    <>
-      <div className="container" onClick={() => setState(!state)}>
-        <div>
-          <img src={Deleteicon} alt="delete" />
-        </div>
-        <div>Delete</div>
-      </div>
 
-      <div className="container-2">
-        {state && (
-          <div className="dialog">
-            <div id="delete-file" className="delete-wrap">
-              <div className="box">
-                <img src={Deleteicon} />
-              </div>
-              <p style={{ fontSize: '24px' }}>Delete Contact</p>
-              <p style={{ fontSize: '16px', color: '#2DA5FC' }}>
-                Sure you want to delete this Contact?
-              </p>
-              <div className="deletebox" id="delete-confirm">
-                <button onClick={() => setState(false)}>Cancel</button>
-                <p onClick={handleDelete}>OK</p>
-              </div>
-            </div>
-          </div>
-        )}
+    <div className='overlay' >
+{!dlt ?
+<div className='popup'>
 
-        {deleted && (
-          <div className="dialog">
-            <div id="delete-file" className="wrapper">
-              <div className="box">
-                <img src={check} />
-              </div>
-              <p style={{ fontSize: '24px' }}>Deleted Contact</p>
-            </div>
-          </div>
-        )}
-      </div>
-    </>
-  );
+<img src={deleteIcon} alt="delete icon" className='icon'/>
+<div className='btns'> 
+<img src={cancelBtn} alt="cancel button" className='cancelBtn' onClick={cancel}/>
+<button className='delete' id='btn' onClick={deleteCall}>Ok</button>
+</div>
+
+</div>
+:
+<div className='popup'>
+
+<img src={completed} alt="completed icon" className='icon'/>
+
+
+</div>
+}
+</div>
+  )
 }
 
-export default Delete;
+export default DeleteUI

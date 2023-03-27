@@ -1,91 +1,102 @@
-import React from 'react'
-import Importicon from '../images/import.png'
-import check from "../images/Check.png";
-import fileicon from "../images/file.png"
-import { useContext, useState } from "react";
-import {Context} from '../context/ContactContext'
-import './import.css'
+import {React,useState} from 'react';
 import axios from 'axios';
-function Import() {
-  const { getData } = useContext(Context);
-  const [state, setState] = useState(false);
-  const [uploaded, setuploaded] = useState(false);
-  const handleState = () => {
-    setState(!state);
-    // console.log(1)
+
+import styles from './import.module.css'
+
+import importIcon from './import.svg'
+import tickMark from './tickmark.svg'
+
+
+function ImportUI(props) {
+    const [apiCallMade, setApiCallMade] = useState(false);
+    const [file, setFile] = useState(false) ;
+    const [fileDraged,setDrag]=useState(false);
+    const url="http://localhost:8080/contacts";
+    const {importVisible,setImportvisible}=props;
+    const {renderOnce,setRenderOnce}=props;
+  
+
+
+const fileUpload = async (csv) => {
+    const formData = new FormData();
+    formData.append("file", csv);
+  
+    try {
+      if (!apiCallMade) {
+      const response = await axios.post(`${url}/contacts`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          // "authorization": `${token}`
+        },
+      });
+      
+      setApiCallMade(!apiCallMade);
+      console.log(response);
+      }
+      //console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const [file, setFile] = useState();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const headers = { Authorization: localStorage.getItem("token") };
-    let data = new FormData();
 
-    data.append("contact", file[0]);
+    const handleDrop = (event) => {
+        event.preventDefault();
+        
+        const file = event.dataTransfer.files[0];
+        console.log(file);
+         
+        if (file.type === "text/csv") {
 
-    const res = axios.post(
-      "backend api endpoint foe uploading",
-      data,
-      { headers }
-    );
-    // window.location.reload(false)
-    setState(false);
-    setuploaded(true);
 
-    setTimeout(() => {
-      setuploaded(false);
-      getData();
-    }, 2000);
-  };
+         
+          setDrag(false);
+
+          fileUpload(file);
+          setFile(true);
+          /////////////////////
+          setTimeout(() => {
+            setRenderOnce(!renderOnce)
+            setImportvisible(!importVisible);
+          }, 1500);
+          /////////////////////
+        }
+      };
+    
+      const handleDragOver = (event) => {
+        event.preventDefault();
+        setDrag(true);
+        
+      };
+      const handleOverlayDrop = (event) => {
+        event.preventDefault();
+        setDrag(true);
+        
+      };
+     
+      const cancelClick=()=>{
+        setImportvisible(!importVisible);
+      }
 
   return (
-    <>
-      <div className="container" onClick={handleState}>
-        <div className="icon-container">
-          <img src={Importicon} alt="icon"></img>
+    <div className={styles.overlay}  onDragOver={handleDragOver} onDrop={handleDrop} >
+        
+        {!file ? <div className={fileDraged ? styles.popuoOndrag : styles.popup}  > 
+        <img src={importIcon} alt="import icon" className={styles.importIcon}/>
+        <button className={styles.cancelBtn} onClick={cancelClick}>Cancel</button>
         </div>
-        <div>Import</div>
-      </div>
+        : 
+        <div className={styles.popup} >
 
-      <div className="container-2">
-        {state && (
-          <div className="dialog">
-            <div id="import-file" className="file-container">
-              <div id="import-image">
-                <img src={fileicon} />
-              </div>
-              <p className="import-text">Import File</p>
-              <input
-                id="file"
-                type="file"
-                onChange={(e) => {
-                  setFile(e.target.files);
-                }}
-              />
-              <button id="submit" onClick={(e) => handleSubmit(e)}>
-                Submit
-              </button>
-            </div>
-          </div>
-        )}
+        <img src={tickMark} alt="import icon" className={styles.tickMark}/>
+    
+            </div>}
+        
 
-        {uploaded && (
-          <div className="dialog">
-            <div id="import-icons" className="icons-container">
-              <div id="icon-background">
-                <img src={check} />
-              </div>
-              <div id="task-completed">
-                <p className="completed-text">Import completed</p>
-                <br />
-                <p className="csv-text">Csv is Uploaded</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </>
-  );
+
+        
+    </div>
+  )
 }
 
-export default Import;
+export default ImportUI
