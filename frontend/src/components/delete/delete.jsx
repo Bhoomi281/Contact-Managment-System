@@ -1,25 +1,24 @@
 import {React,useState} from 'react';
 import './delete.css';
-import axios from 'axios';
 import deleteIcon from './delete.svg';
 import cancelBtn from './cancelBtn.svg';
 import completed from './tickMark.svg'
+import axios from 'axios';
+import { isAuthenticated } from '../../helper/helper'
 
 function DeleteUI(props) {
   const [apiCallMade, setApiCallMade] = useState(false);
   const [dlt, setDelete] = useState(false) ;
   const url=process.env.REACT_APP_API;
+  const token = isAuthenticated();
+
 
   const {deleteVisible,setDltvisible}=props;
-  // const {renderOnce,setRenderOnce}=props;
+  const {renderOnce,setRenderOnce}=props;
   const {data,setData}=props;
 // console.log(apiCallMade,dlt,url,array);
-
-
-
   const deleteCall=async ()=>{
     
-    //
     const array = data
   .filter(obj => obj.isChecked === true)
   .map(obj => obj._id);
@@ -29,7 +28,7 @@ function DeleteUI(props) {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        // "authorization": `${token}`,
+        "authorization": `${token}`,
         "ids": array
       }
     };
@@ -46,12 +45,11 @@ function DeleteUI(props) {
 
      /////////////////////
      setTimeout(() => {
-      // setRenderOnce(!renderOnce);
+      setRenderOnce(!renderOnce);
       
       setDltvisible(!deleteVisible);
       
     }, 1500);
-    /////////////////////
   
 
       }
@@ -62,7 +60,7 @@ function DeleteUI(props) {
 
       /////////////////////
       setTimeout(() => {
-        // setRenderOnce(!renderOnce);
+        setRenderOnce(!renderOnce);
         setDltvisible(!deleteVisible);
        
       }, 1500);
