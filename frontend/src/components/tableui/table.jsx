@@ -14,7 +14,7 @@ import importBtn from './importBtn.svg'
 import exportBtn from './exportBtn.svg'
 import userImage from './user.svg'
 
-import Delete from '../delete/deleteUi'
+import  DeleteUI from '../delete/delete'
 import ImportUI from '../import/import'
 
 
@@ -168,7 +168,7 @@ function Table() {
 
     {
       deleteVisible && 
-      <div><Delete  data={data} setData={setData} setRenderOnce={setRenderOnce} renderOnce={renderOnce} setDltvisible={setDltvisible} deleteVisible={deleteVisible}></Delete></div>
+      <div>< DeleteUI  data={data} setData={setData} setRenderOnce={setRenderOnce} renderOnce={renderOnce} setDltvisible={setDltvisible} deleteVisible={deleteVisible}></DeleteUI></div>
     }
     {
       importVisible && 

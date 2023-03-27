@@ -1,12 +1,9 @@
 import React from 'react'
-import Login from './login'
-import SingUp from './signup'
-import { Link } from 'react-router-dom'
-export default function Auth() {
-  return (
-    <div>
-        <Login />
-        <Link to="/signup">Sing up</Link>
-    </div>
-  )
+import { isAuthenticated } from '../../helper/helper'
+import { Navigate } from 'react-router-dom'
+
+const Auth = ({Child}) => {
+  return isAuthenticated() ? <Child /> : <Navigate to='/' />
 }
+
+export default Auth
