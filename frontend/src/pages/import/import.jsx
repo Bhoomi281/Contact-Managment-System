@@ -11,7 +11,7 @@ function ImportUI(props) {
     const [apiCallMade, setApiCallMade] = useState(false);
     const [file, setFile] = useState(false) ;
     const [fileDraged,setDrag]=useState(false);
-    const url="backend api";
+    const url="http://localhost:8080/contacts";
     const {importVisible,setImportvisible}=props;
     const {renderOnce,setRenderOnce}=props;
   
