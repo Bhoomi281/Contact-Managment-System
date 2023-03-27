@@ -1,20 +1,24 @@
-import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import SignUp from './pages/authentication/signup';
-import Auth from './pages/authentication/auth';
-import ContactPages from './pages/totalContacts/ContactPages';
-
-export default function App() {
+import Login from './components/login/login'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignUp from './components/signup/signup';
+import Table from './components/tableui/table';
+import PrivateRoute from './components/auth/PrivateRoute';
+function App() {
   return (
-    <div className="App">
-      <Router>
+    <>
+    <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Auth />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/contactPages' element={<ContactPages />} />
+          <Route path="/" element={<Login/>}/>
+          <Route path="/register" element={<SignUp/>}/>
+          <Route path="/contacts" element={<PrivateRoute Child={Table} />}/>
+          {/* <Route path="/contacts" element={<Table />} /> */}
+
         </Routes>
-      </Router>
-    </div>
+      </BrowserRouter>
+    </>
   );
-    }
+}
+
+export default App;
+
