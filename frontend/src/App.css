@@ -94,7 +94,8 @@ margin-left: 24px;
 margin-top: 40px;
 Font-family: Titillium Web;
 Font-style: SemiBold;
-Font-size: 30px;
+Font-size: 40px;
+font-weight: 800;
 Line-height: 49px;
 Line-height: 100%;
 Align: Left;
@@ -136,7 +137,7 @@ height: 24px;
 left: 1380px;
 top: 27px;
 font-family: Titillium Web;
-font-size: 16px;
+font-size: 18px;
 font-weight: 600;
 line-height: 24px;
 letter-spacing: 0em;
@@ -153,7 +154,7 @@ left: 1380px;
 top: 51px;
 border-radius: nullpx;
 Font-family: Titillium Web;
-font-weight: 600;
+font-weight: 900;
 Font-style: Regular;
 Font-size: 14px;
 Line-height: 21px;
@@ -175,6 +176,7 @@ top: 20px;
 .table{
   margin-top: 15px;
   margin-left:280px;
+  
 
 }
 .table-heading{
@@ -184,6 +186,7 @@ border-radius: 10px;
 corner-radius: 10px;
 box-shadow: 1px 1px 20px 0px #FE86271A inset;
 box-shadow: -1px -1px 20px 0px #FE86271A inset;
+
 
 }
 .checkbox{
@@ -201,9 +204,10 @@ td{
   Opacity: 60%;
 Blend: Pass through;
 }
-tr{
-
-}
+/* tr{
+  font-size: 30px;
+  font-weight: 800;
+} */
 .date{
   height: 40px;
   width: 120px;
@@ -214,53 +218,98 @@ tr{
   border: none;
   box-shadow: 1px 1px 20px 0px #0000001A;
   font-family: Titillium Web;
-font-size: 13px;
-font-weight: 400;
+font-size: 19px;
+font-weight: 520;
 line-height: 30px;
 letter-spacing: 0em;
 text-align: left;
-
+border: 2px solid black;
+}
+.downarrow
+{
+  position: absolute;
+left: 100px;
+right: 64.87%;
+top: 10px;
+bottom: 84.33%;
+}
+.lineblack
+{
+  position: absolute;
+   right :39px;
 }
 
 .filter{
-  height: 40px;
-  width: 120px;
-  margin-left: 25px;
-  margin-top: 20px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: none;
-  box-shadow: 1px 1px 20px 0px #0000001A;
+  position: absolute;
+width: 137px;
+height: 40px;
+left: 474px;
+font-size: 19px;
+top: 115px;
+background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+}
+.filterlogo
+{
+  position: absolute;
+  left: 20px;
+ top: 10px;
+
 }
 .delete{
-  height: 40px;
-  width: 120px;
-  margin-left: 25px;
-  margin-top: 20px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: none;
-  box-shadow: 1px 1px 20px 0px #0000001A;
+  position: absolute;
+width: 139px;
+height: 41px;
+left: 1000px;
+top: 115px;
+background: #FFFFFF;
+font-size: 19px;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+}
+.deletelogo
+{
+position: absolute;
+left: 20px;
+top: 10px;
+
+}
+.importlogo
+{
+  position: absolute;
+ left: 20px;
+ top: 10px;
+
 }
 .import{
-  height: 40px;
-  width: 120px;
-  margin-left: 25px;
-  margin-top: 20px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: none;
-  box-shadow: 1px 1px 20px 0px #0000001A;
+  position: absolute;
+width: 141px;
+height: 41px;
+left: 1150px;
+top: 115px;
+font-size: 19px;
+background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+}
+.exportlogo
+{
+  position: absolute;
+ left: 20px;
+ top: 10px;
+
 }
 .export{
-  height: 40px;
-  width: 120px;
-  margin-left: 25px;
-  margin-top: 20px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: none;
-  box-shadow: 1px 1px 20px 0px #0000001A;
+  position: absolute;
+width: 139px;
+height: 41px;
+left: 1300px;
+top: 115px;
+font-size: 19px;
+background: #FFFFFF;
+box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
 }
 .logout{
  margin-top: 580px;

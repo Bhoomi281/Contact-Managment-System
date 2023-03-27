@@ -1,11 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Table from "../Table";
+import downarrow from "../images/downarrow.png"
+import lineblack from "../images/lineblack.png"
 import CSV from "../CSV";
+import filter from "../images/filter.png"
+import importlogo from "../images/importlogo.png"
+import exportlogo from "../images/exportlogo.png"
+import deletelogo from "../images/deletelogo.png"
 import searchlogo from "../images/searchlogo.png"
 import dashboard from "../images/dashboard.png"
 import dashboardlogo from "../images/dashboardlogo.png"
-import logout from "../images/logout.png"
+import logout from "../images/logout.png";
 export default function ContactPages() {
   const [data, setdata] = useState([]);
   const [query, setQuery] = useState("");
@@ -118,22 +124,29 @@ export default function ContactPages() {
         <div>
           <input type="date" className="date" label="select date" />
           <span>
-            <button className="filter">filter</button>
+          <button className="filter">filter
+          <img class="filterlogo" src={filter} alt="logo"/> 
+          <img class="lineblack" src={lineblack} alt="logo"/> 
+          <img class="downarrow" src={downarrow} alt="logo"/> 
+            </button>
           </span>
           <span>
             <button className="delete">
+            <img class="deletelogo" src={deletelogo} alt="logo"/> 
               <i class="fa fa-trash-o" aria-hidden="true"></i>delete
             </button>
           </span>
           <span>
             {" "}
             <button className="import">
+            <img class="importlogo" src={importlogo} alt="logo"/> 
               <i class="fa fa-download" aria-hidden="true"></i>import
             </button>
           </span>
           <span>
             {/* <CSV {...csvLink}> */}
               <button className="export">
+              <img class="exportlogo" src={exportlogo} alt="logo"/> 
                 <i class="fa fa-upload" aria-hidden="true"></i>export
               </button>
             {/* </CSV> */}
