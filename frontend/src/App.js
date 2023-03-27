@@ -15,10 +15,6 @@ export default function App() {
           <Route path='/contactPages' element={<ContactPages />} />
         </Routes>
       </Router>
-<<<<<<< HEAD
-=======
-      {/* <ContactPages/> */}
->>>>>>> b50546560e1a514b0eaa16a82537b9ddf1f10d71
     </div>
   );
     }
