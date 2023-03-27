@@ -1,12 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Table from "../Table";
-<<<<<<< HEAD
 import ImportUI from "../import/import";
 import DeleteUI from "../delete/delete";
-=======
-
->>>>>>> fce9c14fd11233983c12beaf24a7c11c3becbb28
 import downarrow from "../images/downarrow.png"
 import lineblack from "../images/lineblack.png"
 import CSV from "../CSV";
