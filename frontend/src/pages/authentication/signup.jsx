@@ -1,22 +1,27 @@
-
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
+  const [confirm_Password, setconfirm_Password] = useState("")
 
-  const onsubmit = async (event) =>{
-    try{
-      await axios.post("/http://localhost:3001/auth/signup", {
+  const navigate = useNavigate()
+
+
+  const onsubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await axios.post("http://localhost:3001/auth/signup", {
         email,
         password,
-        confirmPassword
+        confirm_Password
       })
       alert("Registration successfull..!");
-    }catch(err){
+      navigate("/")
+    } catch (err) {
       console.error(err)
     }
   }
@@ -26,13 +31,13 @@ export default function SignUp() {
         <h1> Logo </h1>
         <h3> Create New Account</h3>
         <div className='email'>
-          <input type="email" id='email' value={email} placeholder="Mail ID" onChange={(event)=>setEmail(event.target.value)}/>
+          <input type="email" id='email' value={email} placeholder="Mail ID" onChange={(event) => setEmail(event.target.value)} />
         </div>
         <div className='create-password'>
-        <input type="password" id='password' value={password} placeholder="Password" onChange={(event)=>{setPassword(event.target.value)}}/>
+          <input type="password" id='password' value={password} placeholder="Password" onChange={(event) => { setPassword(event.target.value) }} />
         </div>
         <div className='confirm-password'>
-        <input type="password" id='confirm-password' value={confirmPassword} placeholder="Confirm-password" onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
+          <input type="password" id='confirm-password' value={confirm_Password} placeholder="Confirm-password" onChange={(event) => { setconfirm_Password(event.target.value) }} />
         </div>
         <button type='submit' onClick={onsubmit}> Sign Up</button>
       </form>
