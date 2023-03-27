@@ -10,10 +10,14 @@ const userScheama = new mongoose.Schema({
         type: String,
         require: true,
     },
-    confirm_Password:{
+    confirm_password:{
         type : String,
         require: true
     }
 })
 const user = mongoose.model("users", userScheama)
+<<<<<<< HEAD
+=======
+
+>>>>>>> fce9c14fd11233983c12beaf24a7c11c3becbb28
 module.exports = {user}

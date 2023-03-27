@@ -1,4 +1,8 @@
 const router = require("express").Router()
+<<<<<<< HEAD
+=======
+
+>>>>>>> fce9c14fd11233983c12beaf24a7c11c3becbb28
 //posting 
 const Contacts = require("../models/contacts.js");
 //posting 

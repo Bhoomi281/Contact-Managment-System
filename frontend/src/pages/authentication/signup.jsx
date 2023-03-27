@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("")
-  const [confirm_Password, setconfirm_Password] = useState("")
+  const [confirm_password, setconfirm_password] = useState("")
 
   const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ export default function SignUp() {
       await axios.post("http://localhost:3001/auth/signup", {
         email,
         password,
-        confirm_Password
+        confirm_password
       })
       alert("Registration successfull..!");
       navigate("/")
@@ -37,7 +37,7 @@ export default function SignUp() {
           <input type="password" id='password' value={password} placeholder="Password" onChange={(event) => { setPassword(event.target.value) }} />
         </div>
         <div className='confirm-password'>
-          <input type="password" id='confirm-password' value={confirm_Password} placeholder="Confirm-password" onChange={(event) => { setconfirm_Password(event.target.value) }} />
+          <input type="password" id='confirm-password' value={confirm_password} placeholder="Confirm-password" onChange={(event) => { setconfirm_password(event.target.value) }} />
         </div>
         <button type='submit' onClick={onsubmit}> Sign Up</button>
       </form>
