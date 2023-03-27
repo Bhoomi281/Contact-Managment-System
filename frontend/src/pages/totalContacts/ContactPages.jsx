@@ -1,8 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Table from "../Table";
+import downarrow from "../images/downarrow.png"
+import lineblack from "../images/lineblack.png"
 import CSV from "../CSV";
-import search from "../images/search.png"
+import filter from "../images/filter.png"
+import importlogo from "../images/importlogo.png"
+import exportlogo from "../images/exportlogo.png"
+import deletelogo from "../images/deletelogo.png"
+import searchlogo from "../images/searchlogo.png"
+import dashboard from "../images/dashboard.png"
+import dashboardlogo from "../images/dashboardlogo.png"
+import logout from "../images/logout.png";
 export default function ContactPages() {
   const [data, setdata] = useState([]);
   const [query, setQuery] = useState("");
@@ -78,12 +87,15 @@ export default function ContactPages() {
       <div className="logo">
         <span className="text_logo">Logo</span>
         <div>
+          <img class="dashlogo" src={dashboardlogo} alt="logo"/>  
           <p className="dashboard">Dashboard</p>
         </div>
         <div className="total_contacts">
+        <img class="dlogo" src={dashboard} alt="logo"/>        
           <p className="text_tc">Total contacts</p>
         </div>
         <button className="logout">
+        <img id="logout" src={logout} alt="logo"/> 
           <i class="fa fa-sign-out" aria-hidden="true">
             Log out
           </i>
@@ -91,12 +103,16 @@ export default function ContactPages() {
       </div>
       <div className="heading">
         <span className="contact_text">Total Contacts</span>
-        <input
+       <section>
+       <input
           className="search"
+          id="text"
           placeholder="Search by Email Id....."
           type="text"
             onChange={(e) => setQuery(e.target.value)}
         />
+       <img class="searchlogo" src={searchlogo} alt="logo"/> 
+        </section>
         <div className="pic">
         <img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=600" 
         alt="admin" style={{ width: "50px", height: "50px", borderRadius: "50%" }} />
@@ -106,24 +122,31 @@ export default function ContactPages() {
       </div>
       <div>
         <div>
-          <input type="date" className="date" lable="select date" />
+          <input type="date" className="date" label="select date" />
           <span>
-            <button className="filter">filter</button>
+          <button className="filter">filter
+          <img class="filterlogo" src={filter} alt="logo"/> 
+          <img class="lineblack" src={lineblack} alt="logo"/> 
+          <img class="downarrow" src={downarrow} alt="logo"/> 
+            </button>
           </span>
           <span>
             <button className="delete">
+            <img class="deletelogo" src={deletelogo} alt="logo"/> 
               <i class="fa fa-trash-o" aria-hidden="true"></i>delete
             </button>
           </span>
           <span>
             {" "}
             <button className="import">
+            <img class="importlogo" src={importlogo} alt="logo"/> 
               <i class="fa fa-download" aria-hidden="true"></i>import
             </button>
           </span>
           <span>
             {/* <CSV {...csvLink}> */}
               <button className="export">
+              <img class="exportlogo" src={exportlogo} alt="logo"/> 
                 <i class="fa fa-upload" aria-hidden="true"></i>export
               </button>
             {/* </CSV> */}
