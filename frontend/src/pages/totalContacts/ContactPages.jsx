@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Table from "../Table";
+import ImportUI from "../import/import";
+import DeleteUI from "../delete/delete";
 import downarrow from "../images/downarrow.png"
 import lineblack from "../images/lineblack.png"
 import CSV from "../CSV";
@@ -81,7 +83,18 @@ export default function ContactPages() {
     });
   }, []);
   console.log(data);
+  
+  const [importVisible, setImportVisible] = useState(false);
+  const [renderOnce, setRenderOnce] = useState(false);
 
+  const handleImportClick = () => {
+    setImportVisible(!importVisible);
+  };
+  const [deleteVisible, setDeleteVisible] = useState(false);
+  const handleDeleteClick = () => {
+    setDeleteVisible(true);
+    //setDeleteVisible(!deleteVisible);
+  };
   return (
     <div>
       <div className="logo">
@@ -131,17 +144,28 @@ export default function ContactPages() {
             </button>
           </span>
           <span>
-            <button className="delete">
+            <button className="delete" onClick={handleDeleteClick}>
             <img class="deletelogo" src={deletelogo} alt="logo"/> 
               <i class="fa fa-trash-o" aria-hidden="true"></i>delete
             </button>
+            {deleteVisible && <DeleteUI deleteVisible={deleteVisible} setRenderOnce={setRenderOnce}
+            setDeleteVisible={setDeleteVisible} />}
           </span>
           <span>
             {" "}
-            <button className="import">
-            <img class="importlogo" src={importlogo} alt="logo"/> 
-              <i class="fa fa-download" aria-hidden="true"></i>import
+            <button className="import" onClick={handleImportClick}>
+          <img class="importlogo" src={importlogo} alt="logo"/> 
+              <i class="fa fa-download" aria-hidden="true"></i>
+              import
             </button>
+            {importVisible && (
+        <ImportUI
+          importVisible={importVisible}
+          setImportVisible={setImportVisible}
+          renderOnce={renderOnce}
+          setRenderOnce={setRenderOnce}
+        />
+      )}
           </span>
           <span>
             {/* <CSV {...csvLink}> */}

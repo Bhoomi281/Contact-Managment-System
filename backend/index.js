@@ -17,6 +17,7 @@ mongoose.connect(url).then(() => {
     console.log(`Connection with mongoose failed ${err}`)
 })
 
+
 app.use("/auth", user)
 app.use("/api", contacts)
 

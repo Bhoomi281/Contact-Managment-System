@@ -1,17 +1,14 @@
 import {React,useState} from 'react';
 import './delete.css';
 import axios from 'axios';
-
 import deleteIcon from './delete.svg';
 import cancelBtn from './cancelBtn.svg';
 import completed from './tickMark.svg'
-
 
 function DeleteUI(props) {
   const [apiCallMade, setApiCallMade] = useState(false);
   const [dlt, setDelete] = useState(false) ;
   const url=process.env.REACT_APP_API;
-
 
   const {deleteVisible,setDltvisible}=props;
   // const {renderOnce,setRenderOnce}=props;

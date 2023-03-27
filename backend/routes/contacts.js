@@ -1,6 +1,4 @@
 const router = require("express").Router()
-
-const {Contacts} = require("../models/contacts.js");
 //posting 
 const Contacts = require("../models/contacts.js");
 //posting 
