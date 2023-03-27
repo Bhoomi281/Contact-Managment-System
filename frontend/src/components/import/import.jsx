@@ -1,21 +1,19 @@
 import {React,useState} from 'react';
 import axios from 'axios';
-
 import styles from './import.module.css'
 
 import importIcon from './import.svg'
 import tickMark from './tickmark.svg'
-
+import { isAuthenticated } from '../../helper/helper'
 
 function ImportUI(props) {
     const [apiCallMade, setApiCallMade] = useState(false);
     const [file, setFile] = useState(false) ;
     const [fileDraged,setDrag]=useState(false);
-    const url="http://localhost:8080/contacts";
+    const url=process.env.REACT_APP_API;
     const {importVisible,setImportvisible}=props;
     const {renderOnce,setRenderOnce}=props;
-  
-
+    const token = isAuthenticated();
 
 const fileUpload = async (csv) => {
     const formData = new FormData();
@@ -26,7 +24,7 @@ const fileUpload = async (csv) => {
       const response = await axios.post(`${url}/contacts`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          // "authorization": `${token}`
+          "authorization": `${token}`
         },
       });
       
@@ -39,7 +37,6 @@ const fileUpload = async (csv) => {
     }
   };
 
-
     const handleDrop = (event) => {
         event.preventDefault();
         
@@ -48,8 +45,6 @@ const fileUpload = async (csv) => {
          
         if (file.type === "text/csv") {
 
-
-         
           setDrag(false);
 
           fileUpload(file);
@@ -91,9 +86,6 @@ const fileUpload = async (csv) => {
         <img src={tickMark} alt="import icon" className={styles.tickMark}/>
     
             </div>}
-        
-
-
         
     </div>
   )
