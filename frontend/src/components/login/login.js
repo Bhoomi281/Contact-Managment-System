@@ -121,7 +121,7 @@ const Login = () => {
                 </div>
                 <div className="buttons">
                     <button className="button1" onClick={HandleClick}>Sign In</button>
-                    <Link to="/register" ><p className="signup" >Sign Up</p></Link>
+                    <Link to="/register" ><h2 className="signup">Sign Up</h2></Link>
                 </div>
                 <svg className="left" width="178" height="151" viewBox="0 0 178 151" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="6.84615" cy="6.84615" r="6.84615" fill="#2DA5FC" fill-opacity="0.5" />

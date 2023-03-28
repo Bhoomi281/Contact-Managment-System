@@ -426,7 +426,7 @@ scrollbar {
   visibility: hidden;
   width: 120%;
   background-color: white;
-  color: black;
+  color: rgb(7, 202, 49);
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
@@ -434,6 +434,7 @@ scrollbar {
   z-index: 1;
   top: 125%;
   left: 10%;
+  font-size: 25px;
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
@@ -454,3 +455,4 @@ scrollbar {
   visibility: visible;
   opacity: 1;
 }
+
