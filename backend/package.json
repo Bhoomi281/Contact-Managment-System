@@ -17,7 +17,10 @@
     "node-modules": "^1.0.1",
     "nodemon": "^2.0.22",
     "streamsearch": "^1.1.0"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31fecc60e0ba87343ed9938d61fb076077dbdff8
   },
   "name": "c",
   "version": "1.0.0",
@@ -27,14 +30,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PendemSwetha/ContactsManager-backend.git"
+    "url": "git+https://github.com/naziya7/contacts-manager.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PendemSwetha/ContactsManager-backend/issues"
+    "url": "https://github.com/naziya7/contacts-manager/issues"
   },
-  "homepage": "https://github.com/PendemSwetha/ContactsManager-backend#readme",
+  "homepage": "https://github.com/naziya7/contacts-manager#readme",
   "description": ""
 }
