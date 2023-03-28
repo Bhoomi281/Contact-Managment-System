@@ -1,9 +1,9 @@
 import './App.css';
-import Login from './components/login/login'
+import Login from './components/authentication/login'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignUp from './components/signup/signup';
+import SignUp from './components/authentication/signup';
 import Table from './components/tableui/table';
-import PrivateRoute from './components/auth/PrivateRoute';
+import Auth from './components/authentication/auth';
 function App() {
   return (
     <>
@@ -11,9 +11,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login/>}/>
           <Route path="/register" element={<SignUp/>}/>
-          <Route path="/contacts" element={<PrivateRoute Child={Table} />}/>
+          <Route path="/contacts" element={<Auth Child={Table} />}/>
           {/* <Route path="/contacts" element={<Table />} /> */}
-
         </Routes>
       </BrowserRouter>
     </>
