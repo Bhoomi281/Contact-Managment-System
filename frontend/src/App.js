@@ -1,7 +1,7 @@
 import './App.css';
-import Login from './components/authentication/login'
+import Login from './components/login/login'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignUp from './components/authentication/signup';
+import SignUp from './components/signup/signup.js'
 import Table from './components/tableui/table';
 import Auth from './components/authentication/auth';
 function App() {
