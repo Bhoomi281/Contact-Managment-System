@@ -9,41 +9,8 @@ const SignUp = () => {
     const [redirect, setredirect] = useState(false);
 
     const url=process.env.REACT_APP_API;
-
-
-    const validateEmail = (email) => {
-        {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        }
-    }
-
-    const validatePassword = (password) => {
-        let error = '';
-
-        if (!password) {
-            error = 'Password is required';
-        } else if (password.length < 8) {
-            error = 'Password must be at least 8 characters long';
-        } else if (!/[A-Z]/.test(password)) {
-            error = 'Password must contain at least one uppercase letter';
-        } else if (!/[a-z]/.test(password)) {
-            error = 'Password must contain at least one lowercase letter';
-        } else if (!/\d/.test(password)) {
-            error = 'Password must contain at least one number';
-        }
-        return error;
-    }
-
     const HandleClick = () => {
         if (email, password, Confirm) {
-            const isVallid = validateEmail(email);
-            const isPasswd = validatePassword(password);
-            if (isVallid) {
-                if (isPasswd !== "") {
-                    alert(isPasswd)
-                }
-                else {
                     if (password === Confirm) {
                         fetch(`${url}/register`, {
                             method: "POST",
@@ -70,10 +37,7 @@ const SignUp = () => {
                         alert("Password and confirm password must be same")
                     }
 
-                }
-            } else {
-                alert("Please enter a valid email")
-            }
+
         } else {
             alert("Please Fill all Fields")
         }
