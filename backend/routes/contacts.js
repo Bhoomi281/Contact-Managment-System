@@ -82,7 +82,7 @@ router.post("/", upload.single("file"),async  (req, res) => {
         
         // Json insertion to database
 
-        let files=await contactModel.insertMany(jsonObj);
+        let files=await Contacts.insertMany(jsonObj);
         
         //console.log(files);
 
@@ -106,7 +106,7 @@ router.delete('/delete',async (req,res)=>{
     try{
     let delIds=req.headers['ids'].split(',');
     console.log(delIds);
-    let deleted= await contactModel.deleteMany({ _id: { $in: delIds } });
+    let deleted= await Contacts.deleteMany({ _id: { $in: delIds } });
     console.log(deleted.deletedCount);
     res.status(200).send({status: "Success"})
     }catch(e){
