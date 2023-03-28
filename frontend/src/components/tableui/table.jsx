@@ -1,30 +1,22 @@
 import React from 'react'
 import { useState , useEffect} from 'react'
 import close from './close.png';
-
 import './table.css'
 import side from './side.svg'
 import logout from './logout.svg'
 import topbar from './topbar.svg'
 import filter from './filter.svg'
-
 import searchIcon from './search.svg'
 import deleteBtn from './deleteBtn.svg'
 import importBtn from './importBtn.svg'
 import exportBtn from './exportBtn.svg'
 import userImage from './user.svg'
-
 import  DeleteUI from '../delete/delete'
 import ImportUI from '../import/import'
-
-
 import { isAuthenticated } from '../../helper/helper'
 import { HandleLogout } from '../../helper/helper'
 
 function Table() {
-
-
-
 
   const [enteredText,setEnteredText]=useState('')
   const [deleteVisible,setDltvisible]=useState(false);
@@ -233,13 +225,6 @@ function Table() {
       </div>
     </div>
 
-
-    
-
-
-
-
-
     <div className='filter'>
     <img src={filter} className='filterimgstick' alt='icon'></img>
     {/* {Individual buttons} */}
@@ -249,9 +234,7 @@ function Table() {
     <img src={exportBtn} className='filterimg' alt='icon'></img>
     </div>
 
-    
     </div>
-    
     
     {/* Write in this div the table view code */}
     <div className="Overflow">
